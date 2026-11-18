@@ -10,7 +10,6 @@ class FocusSession {
   DateTime? endedAt;
   SessionStatus status;
 
-  // TODO: constructor; status defaults to running, completedMinutes to 0
   FocusSession({
     required this.id,
     required this.taskId,

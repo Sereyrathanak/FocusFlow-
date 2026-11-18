@@ -13,7 +13,6 @@ class Course {
   final List<ClassSchedule> schedules;
   final List<StudentTask> tasks;
 
-  // TODO: constructor with id, name, color, createdAt; isArchived defaults to false
   Course({
     required this.id,
     required this.name,
@@ -25,18 +24,33 @@ class Course {
   })  : schedules = schedules ?? [],
         tasks = tasks ?? [];
 
-  // TODO: archive() -> set isArchived = true (rule 17: archived course can't get new tasks)
-  void archive() => throw UnimplementedError();
+  // rule 17: archived course can't get new tasks
+  void archive() {
+    isArchived = true;
+  }
 
-  // TODO: rename(newName) -> update name, reject empty name
-  void rename(String newName) => throw UnimplementedError();
+  void rename(String newName) {
+    if (newName.trim().isEmpty) {
+      throw ArgumentError('Course name cannot be empty');
+    }
+    name = newName.trim();
+  }
 
-  // TODO: addSchedule(schedule) -> add a ClassSchedule to this course
-  void addSchedule(ClassSchedule schedule) => throw UnimplementedError();
+  void addSchedule(ClassSchedule schedule) {
+    schedules.add(schedule);
+  }
 
-  // TODO: addTask(task) -> add a StudentTask to this course
-  void addTask(StudentTask task) => throw UnimplementedError();
+  void addTask(StudentTask task) {
+    tasks.add(task);
+  }
 
-  // TODO: pendingTasks getter -> tasks where status is not completed
-  List<StudentTask> get pendingTasks => throw UnimplementedError();
+  List<StudentTask> get pendingTasks {
+    List<StudentTask> result = [];
+    for (StudentTask task in tasks) {
+      if (!task.isCompleted) {
+        result.add(task);
+      }
+    }
+    return result;
+  }
 }
