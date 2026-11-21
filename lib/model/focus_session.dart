@@ -43,7 +43,7 @@ class FocusSession {
     }
     completedMinutes = completedMinutes + minutes;
     if (completedMinutes > plannedMinutes) {
-      completedMinutes = plannedMinutes; // cap at planned
+      completedMinutes = plannedMinutes;
     }
   }
 

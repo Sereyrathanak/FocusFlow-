@@ -24,7 +24,7 @@ class Course {
   })  : schedules = schedules ?? [],
         tasks = tasks ?? [];
 
-  // rule 17: archived course can't get new tasks
+  //archived course can't get new tasks
   void archive() {
     isArchived = true;
   }
